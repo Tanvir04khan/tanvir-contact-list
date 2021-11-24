@@ -6,14 +6,14 @@ import { lightTheme, darkTheme, GlobalStyles } from "./Common/Theme";
 const App = () => {
   const [theme, setTheme] = useState("light");
 
-  const themeToggleHandler = () => {
+  const toggleTheme = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");
   };
 
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <GlobalStyles />
-      <HomeScreen onThemeToggle={themeToggleHandler} theme={theme} />
+      <HomeScreen onThemeToggle={toggleTheme} theme={theme} />
     </ThemeProvider>
   );
 };

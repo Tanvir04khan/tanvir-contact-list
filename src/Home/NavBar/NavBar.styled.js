@@ -44,11 +44,11 @@ export const Logo = styled.section`
 
   padding: 2rem;
 
-  & img {
+   img {
     height: 2rem;
   }
 
-  & h1 {
+   h1 {
     font-size: 1.5rem;
     font-weight: 700;
 
