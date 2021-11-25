@@ -4,10 +4,14 @@ import editIcon from "../../../assets/images/pencil.png";
 import { Wrapper } from "./Contact.styled";
 
 const ContactList = ({ theme }) => {
+  const randomNumberGenerator = () => {
+    return Math.floor(Math.random() * 100000 + 1);
+  };
+
   return (
     <Wrapper theme={theme}>
       <img
-        src="https://avatars.dicebear.com/api/bottts/100000.svg"
+        src={`https://avatars.dicebear.com/api/bottts/${randomNumberGenerator()}.svg`}
         alt="Avatar"
       />
       <div className="name">Khan Tanvir</div>

@@ -3,5 +3,23 @@
 }
 
 .dark {
-  background-color: #363537;
+  background-color: #121317;
+}
+
+.wrapper {
+  display: grid;
+  place-content: center;
+
+  width: 100vw;
+  height: 100vh;
+}
+
+.darkmode {
+  display: grid;
+  place-content: center;
+
+  width: 100vw;
+  height: 100vh;
+
+  background-color: #121317;
 }

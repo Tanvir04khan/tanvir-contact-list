@@ -6,7 +6,7 @@ export const Container = styled.div`
   width: 75%;
 
   margin: auto;
-  padding-top: 4rem;
+  padding-top: 5rem;
 
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -38,5 +38,36 @@ export const Container = styled.div`
     width: 100%;
     column-gap: 20px;
     grid-template-columns: repeat(1, 1fr);
+  }
+`;
+
+export const Wrapper = styled.section`
+  position: relative;
+  & > img {
+    position: fixed;
+    bottom: 3rem;
+    right: 4rem;
+
+    width: 4rem;
+
+    cursor: pointer;
+
+    border-radius: 50%;
+
+    transition: 275ms ease-in-out;
+
+    &:hover {
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+
+      transform: translateY(-1.5%);
+    }
+
+    @media (max-width: 768px) {
+      bottom: 1rem;
+      right: 1rem;
+
+      width: 3rem;
+    }
   }
 `;
