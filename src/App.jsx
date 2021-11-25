@@ -1,19 +1,22 @@
 import { useState } from "react";
 import { ThemeProvider } from "styled-components";
-import HomeScreen from "./Home/HomeScreen";
-import { lightTheme, darkTheme, GlobalStyles } from "./Common/Theme";
+import HomeScreen from "./components/Home/HomeScreen";
+import { lightTheme, darkTheme } from "./Common/Theme";
+
+import "./App.css";
 
 const App = () => {
-  const [theme, setTheme] = useState("light");
+  const [mode, setMode] = useState("light");
 
   const toggleTheme = () => {
-    theme === "light" ? setTheme("dark") : setTheme("light");
+    mode === "light" ? setMode("dark") : setMode("light");
   };
 
   return (
-    <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
-      <GlobalStyles />
-      <HomeScreen onThemeToggle={toggleTheme} theme={theme} />
+    <ThemeProvider theme={mode === "light" ? lightTheme : darkTheme}>
+      <div className={mode === "light" ? mode : mode + " dark"}>
+        <HomeScreen onThemeToggle={toggleTheme} mode={mode} />
+      </div>
     </ThemeProvider>
   );
 };

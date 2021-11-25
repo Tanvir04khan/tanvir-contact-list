@@ -6,12 +6,12 @@ export const Nav = styled.nav`
   justify-content: space-between;
 
   width: 100%;
+  height: 6vh;
 
   position: fixed;
   z-index: 10;
 
   background: #3f51b5;
-  opacity: 0.9;
 
   & > img {
     height: 2rem;
@@ -32,8 +32,27 @@ export const Nav = styled.nav`
     }
   }
 
-  @media (max-width: 375px) {
-    justify-content: space-around;
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      height: 1.5rem;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .theme {
+      margin-right: 2rem;
+    }
+
+    .logout {
+      margin-right: 2rem;
+      padding: 0.3rem 0;
+    }
   }
 `;
 
@@ -42,19 +61,18 @@ export const Logo = styled.section`
   align-items: center;
   justify-content: center;
 
-  padding: 2rem;
-
-   img {
+  img {
     height: 2rem;
+    margin-left: 1rem;
   }
 
-   h1 {
+  h1 {
     font-size: 1.5rem;
     font-weight: 700;
 
     color: #fff;
 
-    margin-left: 2rem;
+    margin-left: 1rem;
 
     @media (max-width: 768px) {
       font-size: 1rem;
