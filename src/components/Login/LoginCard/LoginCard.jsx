@@ -1,9 +1,9 @@
 import React from "react";
 import contactLogo from "../../../assets/images/contacts-icon-png.jpg";
-import googleLogo from "../../../assets/images/google.png";
-import { Button, Main } from "./MainContent.styled";
+import googleLogo from "../../../assets/svg/google.svg";
+import { Button, Main } from "./LoginCard.styled";
 
-const MainContent = ({ mode, theme }) => {
+const LoginCard = ({ mode, theme }) => {
   return (
     <div className={mode === "light" ? "wrapper" : "darkmode"}>
       <Main theme={theme}>
@@ -20,4 +20,4 @@ const MainContent = ({ mode, theme }) => {
   );
 };
 
-export default MainContent;
+export default LoginCard;

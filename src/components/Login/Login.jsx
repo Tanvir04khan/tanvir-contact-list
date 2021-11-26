@@ -1,12 +1,12 @@
 import React from "react";
 import Header from "./Header/Header";
-import MainContent from "./MainContent/MainContent";
+import LoginCard from "./LoginCard/LoginCard";
 
 const Login = ({ onThemeToggle, mode, theme }) => {
   return (
     <>
       <Header onThemeToggle={onThemeToggle} mode={mode} />
-      <MainContent mode={mode} theme={theme} />
+      <LoginCard mode={mode} theme={theme} />
     </>
   );
 };

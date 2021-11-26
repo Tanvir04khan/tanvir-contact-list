@@ -57,7 +57,7 @@ export const Button = styled.button`
   border-radius: 5px;
 
   font-size: 1.2rem;
-  font-weight: 700;
+  font-weight: 500;
 
   cursor: pointer;
 
