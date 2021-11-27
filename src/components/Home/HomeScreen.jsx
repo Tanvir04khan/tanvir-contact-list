@@ -4,7 +4,7 @@ import NavBar from "./NavBar/NavBar";
 import addIcon from "../../assets/images/add.png";
 import { Container, Wrapper } from "./HomeScreen.styled";
 
-const HomeScreen = ({ onThemeToggle, theme, mode }) => {
+const HomeScreen = ({ onThemeToggle, theme, mode, onToggleInputModal }) => {
   return (
     <Wrapper>
       <NavBar onThemeToggle={onThemeToggle} mode={mode} />
@@ -13,7 +13,12 @@ const HomeScreen = ({ onThemeToggle, theme, mode }) => {
           <Contact theme={theme} key={ind} />
         ))}
       </Container>
-      <img src={addIcon} alt="Add" className="add" />
+      <img
+        src={addIcon}
+        alt="Add"
+        className="add"
+        onClick={onToggleInputModal}
+      />
     </Wrapper>
   );
 };

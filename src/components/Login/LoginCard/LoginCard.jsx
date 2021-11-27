@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+
+// import { useSelector } from "react-redux";
+// import { useDispatch } from "react-redux";
+// import { useHistory } from "react-router";
 import contactLogo from "../../../assets/images/contacts-icon-png.jpg";
 import googleLogo from "../../../assets/svg/google.svg";
+// import { login } from "../../../redux/action/auth.action";
 import { Button, Main } from "./LoginCard.styled";
 
 const LoginCard = ({ mode, theme }) => {
+  
+
   return (
     <div className={mode === "light" ? "wrapper" : "darkmode"}>
       <Main theme={theme}>
