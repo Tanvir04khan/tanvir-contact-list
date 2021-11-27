@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import deleteIcon from "../../../assets/images/delete.png";
+import deleteIcon from "../../../assets/images/trash.png";
 import editIcon from "../../../assets/images/pencil.png";
 import { randomNumberGenerator } from "../../../utils/generateRandomNumber";
 import { Wrapper } from "./Contact.styled";
