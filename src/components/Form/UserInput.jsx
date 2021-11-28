@@ -3,7 +3,7 @@ import React from "react";
 import { Div } from "./UsreInput.styled";
 
 const UserInput = ({ label, ...props }) => {
-  const [field, meta] = useField(props);
+  const [field] = useField(props);
 
   return (
     <Div className="input">

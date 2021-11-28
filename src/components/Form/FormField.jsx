@@ -1,11 +1,20 @@
 import React from "react";
-import { Formik, Form, FormikConsumer } from "formik";
+import { Formik, Form } from "formik";
 import UserInput from "./UserInput";
 import UserIputSelctcion from "./UserIputSelctcion";
 import { Container } from "./Form.styled";
 import * as yup from "yup";
+import { randomNumberGenerator } from "../../utils/generateRandomNumber";
+import { useDispatch, useSelector } from "react-redux";
+import { postContact } from "../../redux/action/contactList.action";
 
 const FormField = ({ theme, onToggleInputModal }) => {
+  const imageUrl = `https://avatars.dicebear.com/api/bottts/${randomNumberGenerator()}.svg`;
+
+  const { id } = useSelector((state) => state.auth);
+
+  const dispatch = useDispatch();
+
   const validate = yup.object({
     firstName: yup
       .string()
@@ -37,14 +46,15 @@ const FormField = ({ theme, onToggleInputModal }) => {
       validationSchema={validate}
       validateOnChange
       onSubmit={(values, onSubmitProps) => {
-        console.log(values);
         onSubmitProps.resetForm();
         onSubmitProps.setSubmitting(false);
+
+        dispatch(postContact(id, { ...values, imgUrl: imageUrl }));
+        onToggleInputModal();
       }}
     >
       {(formik) => (
         <Container theme={theme}>
-          {console.log(formik)}
           <div
             className="backdrop"
             onClick={() => {
