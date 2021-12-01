@@ -6,12 +6,15 @@ import { Container } from "./Form.styled";
 import * as yup from "yup";
 import { randomNumberGenerator } from "../../utils/generateRandomNumber";
 import { useDispatch, useSelector } from "react-redux";
-import { postContact } from "../../redux/action/contactList.action";
+import {
+  getContactList,
+  postContact,
+} from "../../redux/action/contactList.action";
 
 const FormField = ({ theme, onToggleInputModal }) => {
   const imageUrl = `https://avatars.dicebear.com/api/bottts/${randomNumberGenerator()}.svg`;
 
-  const { id } = useSelector((state) => state.auth);
+  const { id: userId } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
 
@@ -27,6 +30,7 @@ const FormField = ({ theme, onToggleInputModal }) => {
     email: yup.string().email("Email is invalid!").required("Required."),
     phoneNumber: yup
       .string()
+      .min(10, "Must have 10 digits")
       .max(10, "Must have 10 digits")
       .required("Required."),
     status: yup
@@ -49,7 +53,8 @@ const FormField = ({ theme, onToggleInputModal }) => {
         onSubmitProps.resetForm();
         onSubmitProps.setSubmitting(false);
 
-        dispatch(postContact(id, { ...values, imgUrl: imageUrl }));
+        dispatch(postContact(userId, { ...values, imgUrl: imageUrl }));
+        dispatch(getContactList(userId));
         onToggleInputModal();
       }}
     >
