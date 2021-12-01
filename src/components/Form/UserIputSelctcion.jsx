@@ -3,7 +3,7 @@ import React from "react";
 import { Wrapper } from "./UserInputSelection.styled";
 
 const UserIputSelctcion = ({ label, ...props }) => {
-  const [field, meta] = useField(props);
+  const [field] = useField(props);
 
   return (
     <Wrapper>

@@ -4,8 +4,21 @@ import contactListLogo from "../../../assets/images/contacts-icon-png.jpg";
 import darkModeIcon from "../../../assets/images/night-mode.png";
 import brightModeIcon from "../../../assets/images/brightness.png";
 import logOutIcon from "../../../assets/images/logout.png";
+import { useDispatch } from "react-redux";
+import { logout } from "../../../redux/action/auth.action";
+import { CONTACT_LIST_NULL } from "../../../redux/actionTypes";
 
 const NavBar = ({ onThemeToggle, mode }) => {
+  const dispatch = useDispatch();
+
+  const logoutHandler = () => {
+    dispatch(logout());
+    dispatch({
+      type: CONTACT_LIST_NULL,
+      payload: [],
+    });
+  };
+
   return (
     <Nav>
       <Logo>
@@ -20,7 +33,7 @@ const NavBar = ({ onThemeToggle, mode }) => {
           onClick={onThemeToggle}
         />
         <div className="logout">
-          <img src={logOutIcon} alt="Log Out" />
+          <img src={logOutIcon} alt="Log Out" onClick={logoutHandler} />
         </div>
       </div>
     </Nav>

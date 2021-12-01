@@ -70,4 +70,13 @@ export const Wrapper = styled.section`
       width: 3rem;
     }
   }
+
+  h2 {
+    padding-top: 10rem;
+    padding-left: 35vw;
+
+    font-size: 2rem;
+
+    font-weight: 700;
+  }
 `;
