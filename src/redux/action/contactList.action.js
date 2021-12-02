@@ -21,8 +21,6 @@ export const getContactList = (id) => async (dispatch) => {
       id: key,
     }));
 
-    console.log(contactList);
-
     dispatch({
       type: actionTypes.CONTACT_LIST_SUCCESS,
       payload: contactList,
@@ -87,3 +85,31 @@ export const deleteContact = (id, contactInfoId) => async (dispatch) => {
     });
   }
 };
+
+export const editContact =
+  (userId, contactId, editedContact) => async (dispatch) => {
+    try {
+      dispatch({
+        type: actionTypes.EDIT_CONTACT_START,
+        payload: {
+          userId,
+          contactId,
+          editedContact,
+        },
+      });
+      await axios.put(
+        `https://tanvir-contact-app-default-rtdb.firebaseio.com/contacts/${userId}/${contactId}.json`,
+        editedContact
+      );
+
+      dispatch({
+        type: actionTypes.EDIT_CONTACT_SUCCESS,
+      });
+    } catch (error) {
+      console.error(error.message);
+      dispatch({
+        type: actionTypes.EDIT_CONTACT_FAIL,
+        payload: error.message,
+      });
+    }
+  };

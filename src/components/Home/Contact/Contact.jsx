@@ -10,7 +10,7 @@ import {
   getContactList,
 } from "../../../redux/action/contactList.action";
 
-const Contact = ({ theme, ...props }) => {
+const Contact = ({ theme, onToggleIsPosting, getContactId, onToggleInputModal, ...props }) => {
   const { email, firstName, lastName, phoneNumber, status, imgUrl, id } = props;
   const dispatch = useDispatch();
 
@@ -35,7 +35,15 @@ const Contact = ({ theme, ...props }) => {
           <img src={deleteIcon} alt="delete" />
         </button>
         <button className="edit-btn">
-          <img src={editIcon} alt="Edit" />
+          <img
+            src={editIcon}
+            alt="Edit"
+            onClick={() => {
+              onToggleIsPosting(false);
+              getContactId(id);
+              onToggleInputModal()
+            }}
+          />
         </button>
       </div>
     </Wrapper>

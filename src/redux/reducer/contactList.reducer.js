@@ -27,13 +27,14 @@ export const contactListReducer = (prevState = initialState, action) => {
         ...prevState,
         data: action.payload,
         firebaseHasData: true,
-        loading:false
+        loading: false,
       };
     case actionTypes.CONTACT_LIST_FAIL:
       return {
         ...prevState,
         data: null,
         error: action.payload,
+        loading: false,
       };
     case actionTypes.DELETE_CONTACT_START:
       return {
@@ -41,8 +42,8 @@ export const contactListReducer = (prevState = initialState, action) => {
         contactInfoToDelete: {
           userId: action.payload.userId,
           contactId: action.payload.contactId,
-          loading: true,
         },
+        loading: true,
       };
     case actionTypes.DELETE_CONTACT_SUCCESS:
       return {
@@ -70,6 +71,24 @@ export const contactListReducer = (prevState = initialState, action) => {
       return {
         ...prevState,
         error: action.payload,
+        loading: false,
+      };
+    case actionTypes.EDIT_CONTACT_START:
+      return {
+        ...prevState,
+        loading: true,
+        contactToBeEdited: action.payload,
+      };
+    case actionTypes.EDIT_CONTACT_SUCCESS:
+      return {
+        ...prevState,
+        loading: false,
+      };
+    case actionTypes.EDIT_CONTACT_FAIL:
+      return {
+        ...prevState,
+        error: action.payload,
+        loading: false,
       };
 
     default:

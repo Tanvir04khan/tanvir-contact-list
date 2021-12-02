@@ -13,6 +13,15 @@ import { useSelector } from "react-redux";
 const App = () => {
   const [mode, setMode] = useState("light");
   const [isInputModalVisible, setIsInputModalVisible] = useState(false);
+  const [isPosting, setIsPosting] = useState(false);
+  const [contactToBeEdited, setContactToBeEdited] = useState({});
+
+  const { data } = useSelector((state) => state.contactList);
+
+  const getContactId = (id) => {
+    const contactToBeEdited = data.filter((contact) => contact.id === id);
+    setContactToBeEdited(contactToBeEdited[0]);
+  };
 
   const { accessToken } = useSelector((state) => state.auth);
 
@@ -32,10 +41,18 @@ const App = () => {
     mode === "light" ? setMode("dark") : setMode("light");
   };
 
+  const toggleIsPosting = (value) => {
+    setIsPosting(value);
+  };
+
   return (
     <ThemeProvider theme={mode === "light" ? lightTheme : darkTheme}>
       <div className={isInputModalVisible ? "visible" : "invisible"}>
-        <FormField onToggleInputModal={toggleInputModal} />
+        <FormField
+          onToggleInputModal={toggleInputModal}
+          isPosting={isPosting}
+          contactToBeEdited={contactToBeEdited}
+        />
       </div>
       <Switch>
         <Route path="/login" exact>
@@ -47,6 +64,8 @@ const App = () => {
               onThemeToggle={toggleTheme}
               mode={mode}
               onToggleInputModal={toggleInputModal}
+              onToggleIsPosting={toggleIsPosting}
+              getContactId={getContactId}
             />
           </div>
         </Route>
