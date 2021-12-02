@@ -4,8 +4,10 @@ import { Div } from "./UsreInput.styled";
 
 const UserInput = ({ label, ...props }) => {
   const [field] = useField(props);
+  
 
   return (
+    
     <Div className="input">
       <label htmlFor={field.name}>{label}</label>
       <input {...field} {...props} />
